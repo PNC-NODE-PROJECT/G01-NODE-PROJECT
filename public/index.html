@@ -5,137 +5,118 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project node js</title>
+    <title>login</title>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/main.css">
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="js/main.js" defer></script>
+    
 </head>
 
 <body>
-
-
-    <div class="menu">
-        <h1>QUIZ</h1>
-    </div>
-
-    <div class="container">
-        <div class="header">
-            <!-- <img id="img" src="images/1.png" alt=""> -->
-            <!-- </div> -->
-            <h1>WELCOM TO OUR QUIZZ</h1>
-        </div>
-        <div class="btn-start">
-            <button id="btn-start" class="button-37" role="button">START</button>
-        </div>
+    <!-- login -->
+    <div class="sign_in"> 
+        <form class="vh-100 ">
+            <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+                <div class="container h-100">
+                    <div class="row d-flex justify-content-center align-items-center h-100">
+                        <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+                            <div class="card" style="border-radius: 15px;">
+                                <div class="card-body p-5">
+                                    <h2 class="text-uppercase text-center mb-5"></i>QUIZ APP</h2>
+                                    <div class="form-outline mb-4">
+                                        <input type="email" id="emails" class="form-control form-control-lg"
+                                            placeholder="Your Email" name="emails" />
+                                        <small class="form-text">Pleas fil up your email</small class="form-text">
+                                    </div>
+                                    <div class="form-outline mb-4">
+                                        <input type="password" id="passwords" class="form-control form-control-lg"
+                                            placeholder="Password" name="passwords"/>
+                                            <small class="text">Pleas fil up your password</small class="text">
+                                            <small class="incorrect">Incorrect password and email</small class="text">
+                                    </div>
+                                    <div class="btn_login">
+                                       <button id="btn_login" type="submit"
+                                            class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">
+                                              Log in </button>
+                                              
+                                    </div>
+                                    <h4>or</h4>
+                                    <div class="btn-sign-up">
+                                        <button id="btn-sign-up" type="submit" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body btnhige" class="btnhige">Create New Account</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
     </div>
     
+    <div class="sign-up" >
+        <section class="vh-100 bg-image"
+            >
+            <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+                <div class="container h-100">
+                    <div class="row d-flex justify-content-center align-items-center h-100">
+                        <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+                            <div class="card" style="border-radius: 15px;">
+                                <div class="card-body p-5">
+                                    <h2 class="text-uppercase text-center mb-5">Create an account</h2>
+                                    <form class="higesignup">
+                                        <div class="form-outline mb-4">
+                                            <input type="text" id="username" class="form-control form-control-lg " placeholder="Your name" />
+                                            <!-- <label class="form-label" for="form3Example1cg">Your Name</label> -->
 
+                                        </div>
 
+                                        <div class="form-outline mb-4">
+                                            <input type="email" id="email" class="form-control form-control-lg" placeholder="Your email" />
+                                            <!-- <label class="form-label" for="form3Example3cg">Your Email</label> -->
+                                           
+                                        </div>
 
-    <!-- seconde page -->
+                                        <div class="form-outline mb-4">
+                                            <input type="password" id="password" class="form-control form-control-lg" placeholder="Password" />
+                                            <!-- <label class="form-label" for="form3Example4cg">Password</label> -->
+                                            
+                                        </div>
 
-    <div class="group-start">
-        <div class="create">
-            <h1>CREATE QUIZ</h1>
-            <div class="img-quiz">
-                <img src="images/create.png" width="300px" height="320px" alt="">
-            </div>
-            <div class="btn-create">
-                <button id="btn-create" class="button-37" role="button">CREATE QUIZ</button>
-
-            </div>
-
-        </div>
-        <div class="play">
-            <h1>PLAY QUIZ</h1>
-            <div class="img-quiz">
-                <img src="images/play.png" width="300px" height="320px" alt="">
-
-            </div>
-            <div class="btn-play">
-                <button id="btn-play" class="button-37" role="button">PLAY QUIZ</button>
-            </div>
-
-        </div>
-    </div>
-
-    <!-- third page -->
-    <div class="create-quiz">
-        <div class="btn_restart">
-            <img src="images/btn-back.png" width="6%" id="btn_back">
-        </div>
-        <div class="quiz-title" id="quiz-title">
-            <div class="form-group">
-                <input type="text" name="" id="quiz_title" class="form-control title" placeholder="Quizz Title">
-            </div>
-            <!-- <div class="form-group">
-                <span id="score" class="form-control"></span>
-            </div> -->
-        </div>
-        <div class="form-create-quiz">
-            <div class="add_questions_container">
-                <div class="points">
-                    <input type="number" id="points" placeholder="0">
-                    <p>points</p>
-                </div>
-                <div class="questions">
-                    <div class="form-group ">
-                        <input type="text" name="" id="question" class="form-control question" placeholder="Question">
-
+                                        <div class="form-outline mb-4">
+                                            <input type="password" id="re-password" class="form-control form-control-lg" placeholder="Repeat your password"/>
+                                            <!-- <label class="form-label" for="form3Example4cdg">Repeat your password</label> -->
+                                                <!-- <small class="incorrect_error">Incorrect password </small class="text"> -->
+                                        </div>
+                                        <div class="d-flex justify-content-center">
+                                            <button type="submit" id="btn_register" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body" > Register  </button>
+                                            <!-- <a class="log" href="create_quizz/create_quiz.html">quizz</a> -->
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="answers">
-                    <div class="form-group answer ">
-                        <input type="radio" name="answer" id="1" class="radio_answer">
-                        <input type="text" name="" id="answerA" class="form-control" placeholder="Answer1">
-                    </div>
-                    <div class="form-group answer">
-                        <input type="radio" name="answer" id="2" class="radio_answer">
-                        <input type="text" name="" id="answerB" class="form-control" placeholder="Answer2">
-                    </div>
-                    <div class="form-group answer">
-                        <input type="radio" name="answer" id="3" class="radio_answer">
-                        <input type="text" name="" id="answerC" class="form-control" placeholder="Answer3">
-                    </div>
-                    <div class="form-group answer">
-                        <input type="radio" name="answer" id="4" class="radio_answer">
-                        <input type="text" name="" id="answerD" class="form-control" placeholder="Answer4">
-                    </div>
-
-                    <div class="btn-add">
-
-                        <button id="btn-add" class="button-37" role="button">Add Question</button>
-                    </div>
-
-                </div>
             </div>
-            <!-- list questions -->
-            <div id="listQuestion">
-                <!-- <div class="add_questions_container" ></div> -->
-            </div>
-
-
+        </section>
+    </div> 
+    <div class="start">
+        <div class="menu">
+            <h1>QUIZ</h1>
         </div>
-    </div>
-
-    <div class="container_quiz" >
-
-    </div>
-   
-    <div class="Total_score">
-        <h1></h1>
-        <div class="contain_score">
-            <h2></h2>
-            <h3></h3>
-        </div>
-        <!-- <span id="score" class="total_score"></span> -->
-
-
-    </div>
-
     
+        <div class="containers">
+            <div class="header">
+                <h1>WELCOM TO OUR QUIZZ</h1>
+            </div>
+            <div class="btn-start">
+                <button id="btn-start" class="button-37" role="button"><a  href="create_quizz/create_quiz.html">START</a></button>
+                <!-- <a  href="create_quizz/create_quiz.html">START</a> -->
+            </div>
+        </div>
+    </div>
+
+    <script src="Javascript/login.js"></script>
 </body>
-
 </html>

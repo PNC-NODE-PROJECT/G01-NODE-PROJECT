@@ -9,7 +9,6 @@ let domDisplay = document.getElementById("listQuestion");
 let domContain = document.getElementsByClassName("container_quiz");
 const points = document.querySelector('#points');
 let click = false;
-let onclicks = "";
 const createQuestion =() =>{
     let questions = 
         {   
@@ -27,13 +26,12 @@ const createQuestion =() =>{
     for (let correct of correct_Answer_All){
         if (correct.checked){  
             questions["correct_ans"] = correct.id;
-            onclicks = correct.checked;
+            // questions.push(ques)
             click = true;
             let id=correct.id;
             console.log( id )
         }
     }
-    // click = true;
     console.log(questions)
     return questions;
 };
@@ -41,9 +39,19 @@ const createQuestion =() =>{
 const btn_add = document.querySelector("#btn-add");
 btn_add.addEventListener('click', createQuestion);
 
+const show = (element) => {
+    element.style.display = 'block';
+}
+
+// Fucntion hide elemet
+const hide = (element) => {
+    element.style.display = 'none';
+}
+
+
 
 function show_menus() {
-    document.querySelector(".container").style.display = "none";
+    document.querySelector(".containers").style.display = "none";
     document.querySelector(".create-quiz").style.display = "none";
     document.querySelector(".group-start").style.display = "flex";
     document.querySelector(".Total_score").style.display = "none";
@@ -51,10 +59,13 @@ function show_menus() {
 
 
 
-}
+} 
+
+
 function show_hide() {
+    // document.querySelector(".create-quiz").style.display = "none";
     document.querySelector(".create-quiz").style.display = "block";
-    document.querySelector(".container").style.display = "none";
+    // document.querySelector(".containers").style.display = "none";
     document.querySelector(".group-start").style.display = "none";
     document.querySelector(".Total_score").style.display = "none";
     document.querySelector(".container_quiz").style.display = "none";
@@ -98,7 +109,22 @@ function display_all(alldata){
                 answer.style.backgroundColor = "gray";
             }
             answers.appendChild(answer)
-           
+            // let show_radio_answer = document.createElement("div");
+            //     show_radio_answer.className = "new-radio-answer";
+            //     answer.appendChild(show_radio_answer);
+
+            // let radio_answer = document.createElement("div");
+            // radio_answer.className = "radio_answer";
+            // radio_answer.setAttribute("type", "radio");
+            // radio_answer.setAttribute("name", "answer" );
+            // answer.appendChild(radio_answer);
+        
+            // let input_answer = document.createElement("div");
+            // input_answer.className = "form-control";
+            // input_answer.setAttribute("type", "text");
+            // input_answer.placeholder = "Answer1";
+            // answer.appendChild(input_answer);
+
             question_title.value=""
             answerA.value=""
             answerB.value=""
@@ -110,7 +136,6 @@ function display_all(alldata){
                     correct.checked = false;
                 }
             }
-
         }
         
         let moreButton = document.createElement('div');
@@ -171,22 +196,19 @@ function btnupdateQuesiont(btn){
   
 }
 
-let questionId = ""
+let questionId = "";
+let amountofData = 0;
 document.body.addEventListener("click", (e)=>{
-    
     if(e.target.className =="edit"){
         updatedata(e.target.parentNode.id);
         questionId = e.target.parentNode.id;
         // console.log("My id question is", e.target.parentNode.id);
         document.querySelector(".question_list").style.display = "none";
         // document.querySelector("#listQuestion").style.display = "block";
-        
     }else if(e.target.id=="btn-add"){
-        if (question_title.value =='' || answerA.value == '' || answerB.value == '' || answerC.value == '' || answerD.value == '' || points.value == 0 ) {
+        
+        if (question_title.value =='' || answerA.value == '' || answerB.value == '' || answerC.value == '' || answerD.value == '' || points.value == 0 || click == false ) {
             window.alert('Please input all data before you create the question')
-        }
-        if( click == false){
-            alert("Please choose the correct_answer!")
         }
         else {
             btnupdateQuesiont(e.target);
@@ -195,12 +217,12 @@ document.body.addEventListener("click", (e)=>{
     if ( e.target.id == "btn-play"){
         display_all_questions();
         document.querySelector(".group-start").style.display = "none";
-        document.querySelector(".container").style.display = "none";
+        // document.querySelector(".containers").style.display = "none";
         document.querySelector(".container_quiz").style.display = "block";
+
     }
     if(e.target.className == "btn_submit"){
-        calculateScore();
-        
+        calculateScore();  
     }
 })
 
@@ -212,7 +234,7 @@ function updatedata(questionId){
             if(element._id==questionId){
                 // console.log("question to edit ", element);
                 document.querySelector("#question").value=element.title
-                
+                document.querySelector('#points').value = element.score;
                 document.querySelector("#answerA").value=element.answer.answer1
                 document.querySelector("#answerB").value=element.answer.answer2
                 document.querySelector("#answerC").value=element.answer.answer3
@@ -309,43 +331,51 @@ function display_all_questions() {
     submit.textContent = " submit";
     div_display.appendChild(contain_questions);
     div_display.appendChild(submit);
-    // submit.addEventListener('click', calculateScore)
+    submit.addEventListener('click', calculateScore)
     // document.body.appendChild(div_display);
 });
 }
 
 // count score
-is_check=false;
 let correct_answer = [];
+let is_check=false;
+let index = 0;
 function calculateScore(){
     let controlAnswers = document.querySelectorAll(".answers_controll");
     let array_questions = []
     axios.get("http://localhost:3000/datas").then((result)=>{
         array_questions = result.data;
+        amountofData = array_questions.length;
+        // is_check=false;
         let user_answer = []
         let Total_Score = 0;
         let full_scor = 0;
         for (let controlAnswer of controlAnswers){
             let answers = controlAnswer.childNodes;
+            // console.log("answer"+ controlAnswers)
             for(let answer of answers){
                let check_Correct_Answer = answer.firstChild;
+
                let new_correct_id = check_Correct_Answer.id;
                let new_correct_Answer = check_Correct_Answer.checked;
                if (new_correct_Answer){
-                   is_check=false;
-                   let new_correct_Answer_id = new_correct_id;
-                    user_answer.push(new_correct_Answer_id);
+                is_check=true;
+                index +=1;
+                user_answer.push(new_correct_id);
+                //    let new_correct_Answer_id = new_correct_id;
+                //     user_answer.push(new_correct_Answer_id);
+                //    is_check=true;  
                }
             }
-            is_check=true;
         }
         for (let k =0;k<user_answer.length;k++){
-            if (user_answer[k] == array_questions[k].correct_ans){
+            if (user_answer[k]=== array_questions[k].correct_ans){
                 Total_Score += array_questions[k].score; 
             }
 
             full_scor += array_questions[k].score;
             // console.log(full_score)
+
         }
         document.querySelector(".container_quiz").style.display = "none";
         document.querySelector(".Total_score").style.display = "block";
@@ -394,6 +424,7 @@ function getdata(){
     })
 }
 
+
 // update date in the mongoDB
 
 function updatenewdata(){
@@ -408,7 +439,7 @@ function updatenewdata(){
 
 // ===============main button==========
 
-let btn_start = document.querySelector(".btn-start").addEventListener("click", show_menus);
+// let btn_start = document.querySelector(".btn-start").addEventListener("click", show_menus);
 
 let btn_create = document.querySelector(".btn-create").addEventListener("click",()=>{
     show_hide();
@@ -426,7 +457,8 @@ let btn_back = document.querySelector("#btn_back").addEventListener("click",()=>
 
 // ==============hidden button==================
 
-document.querySelector(".group-start").style.display = "none";
+document.querySelector(".group-start").style.display = "flex";
+// document.querySelector(".group-start").style.display = "none";
 document.querySelector(".create-quiz").style.display = "none";
 document.querySelector(".Total_score").style.display = "none";
 document.querySelector(".container_quiz").style.display ="none";

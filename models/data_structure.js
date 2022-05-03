@@ -19,7 +19,13 @@ const informusers = new mongoose.Schema({
     password:{
         type:String,
         require:true
+    },
+    email:
+    {
+        type: String,
+        require: true
     }
+
 });
 
 const QuestionSchema = new mongoose.Schema({

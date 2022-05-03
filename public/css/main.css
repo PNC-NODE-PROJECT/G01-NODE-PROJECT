@@ -10,7 +10,7 @@ body {
     
 }
 
-.container {
+.containers {
     width: 100%;
     /* margin: 40px; */
     background-image: url(../images/bg.png);
@@ -47,6 +47,13 @@ h1{
 #btn-start{
     font-size: 2rem;
     margin: 78px;
+    
+}
+.btn-start a {
+    color: rgb(252, 248, 248);
+}
+#btn-start a{
+    color: #fff;
 }
 .button-37 {
     width: 25%;
@@ -418,6 +425,18 @@ label{
 #btn_back:hover {
     height: 10vh;
 }
+
+
+
+#emails,#passwords,#username,#email,#password,#re-password{
+    /* border: 1px solid red; */
+    background-color: rgb(209, 228, 235);
+}
+.form-text,.text,.incorrect,.incorrect_error ,.password_error ,.email_error, .name_error{
+    color: red;
+}
+
+
 
 
 
