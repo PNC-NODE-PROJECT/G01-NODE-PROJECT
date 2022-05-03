@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project node js</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="js/main.js" defer></script>
+</head>
+
+<body>
+
+
+    <div class="menu">
+        <h1>QUIZ</h1>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <!-- <img id="img" src="images/1.png" alt=""> -->
+            <!-- </div> -->
+            <h1>WELCOM TO OUR QUIZZ</h1>
+        </div>
+        <div class="btn-start">
+            <button id="btn-start" class="button-37" role="button">START</button>
+        </div>
+    </div>
+    
+
+
+
+    <!-- seconde page -->
+
+    <div class="group-start">
+        <div class="create">
+            <h1>CREATE QUIZ</h1>
+            <div class="img-quiz">
+                <img src="images/create.png" width="300px" height="320px" alt="">
+            </div>
+            <div class="btn-create">
+                <button id="btn-create" class="button-37" role="button">CREATE QUIZ</button>
+
+            </div>
+
+        </div>
+        <div class="play">
+            <h1>PLAY QUIZ</h1>
+            <div class="img-quiz">
+                <img src="images/play.png" width="300px" height="320px" alt="">
+
+            </div>
+            <div class="btn-play">
+                <button id="btn-play" class="button-37" role="button">PLAY QUIZ</button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- third page -->
+    <div class="create-quiz">
+        <div class="btn_restart">
+            <img src="images/btn-back.png" width="6%" id="btn_back">
+        </div>
+        <div class="quiz-title" id="quiz-title">
+            <div class="form-group">
+                <input type="text" name="" id="quiz_title" class="form-control title" placeholder="Quizz Title">
+            </div>
+            <!-- <div class="form-group">
+                <span id="score" class="form-control"></span>
+            </div> -->
+        </div>
+        <div class="form-create-quiz">
+            <div class="add_questions_container">
+                <div class="points">
+                    <input type="number" id="points" placeholder="0">
+                    <p>points</p>
+                </div>
+                <div class="questions">
+                    <div class="form-group ">
+                        <input type="text" name="" id="question" class="form-control question" placeholder="Question">
+
+                    </div>
+                </div>
+                <div class="answers">
+                    <div class="form-group answer ">
+                        <input type="radio" name="answer" id="1" class="radio_answer">
+                        <input type="text" name="" id="answerA" class="form-control" placeholder="Answer1">
+                    </div>
+                    <div class="form-group answer">
+                        <input type="radio" name="answer" id="2" class="radio_answer">
+                        <input type="text" name="" id="answerB" class="form-control" placeholder="Answer2">
+                    </div>
+                    <div class="form-group answer">
+                        <input type="radio" name="answer" id="3" class="radio_answer">
+                        <input type="text" name="" id="answerC" class="form-control" placeholder="Answer3">
+                    </div>
+                    <div class="form-group answer">
+                        <input type="radio" name="answer" id="4" class="radio_answer">
+                        <input type="text" name="" id="answerD" class="form-control" placeholder="Answer4">
+                    </div>
+
+                    <div class="btn-add">
+
+                        <button id="btn-add" class="button-37" role="button">Add Question</button>
+                    </div>
+
+                </div>
+            </div>
+            <!-- list questions -->
+            <div id="listQuestion">
+                <!-- <div class="add_questions_container" ></div> -->
+            </div>
+
+
+        </div>
+    </div>
+
+    <div class="container_quiz" >
+
+    </div>
+   
+    <div class="Total_score">
+        <h1></h1>
+        <div class="contain_score">
+            <h2></h2>
+            <h3></h3>
+        </div>
+        <!-- <span id="score" class="total_score"></span> -->
+
+
+    </div>
+
+    
+</body>
+
+</html>
