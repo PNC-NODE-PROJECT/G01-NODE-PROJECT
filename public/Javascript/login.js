@@ -30,31 +30,31 @@ const hide = (element) => {
     element.style.display = 'none';
 }
 
+
+
+
+
+// hide(container);
+const show_start = () =>{
+    hide(input_login);
+    hide(sign_up)
+    show(start)
+}
+const show_Login = () => {
+    hide(sign_up);
+    show(input_login);
+    hide(start)
+}
+const show_SignUp = () => {
+    hide(input_login);
+    show(sign_up);
+    hide(start);
+}
 hide(sign_up);
 hide(start);
 hide(validation_email);
 hide(validation_password);
 hide(validation_incorrect);
-
-
-
-// hide(container);
-const show_start = (e) =>{
-    e.preventDefault()
-    hide(sign_up);
-    show(start)
-}
-const show_Login = (e) => {
-    e.preventDefault()
-    hide(sign_up);
-    show(input_login);
-    hide(start)
-}
-const show_SignUp = (e) => {
-    e.preventDefault()
-    hide(input_login);
-    show(sign_up);
-}
 
 function get_data_sign_up (){
  
@@ -66,22 +66,20 @@ function get_data_sign_up (){
 
     if (input_username.value =="" && input_password.value == "" && input_email.value == "" && input_re_password == ""){
         alert("Please fill all input")
-        // show_SignUp();
+        show_SignUp();
+        hide(start);
     }else{
-        axios.post("/log/register",sign_up);
+        axios.post("/log/register",sign_up).then(result =>{
+            show_start()
+
+        });
     }
     
-    // if (input_username.value =="" || input_password.value == "" || input_email.value == "" || input_re_password == ""){
-    //     alert("Please fill up all input");
-
-    // }
-
 
     
 }
 
-function login(e){
-    e.preventDefault()
+function login(){
     let url = "http://localhost:3000";
     let input_password = document.querySelector("#passwords").value;
     let input_email = document.querySelector("#emails").value;
@@ -118,15 +116,13 @@ function login(e){
 
 
 
-let sign = document.querySelector("#btn_register");
-sign.addEventListener('click',()=>{
-    get_data_sign_up()
-});
-
 
 
 // btn_login.addEventListener("click", show_SignUp);
 btn_sign_up.addEventListener('click', show_SignUp);
-btn_register .addEventListener('click',show_start);
+btn_register .addEventListener('click',get_data_sign_up);
+// btn_register .addEventListener('click',()=>{
+//     show(start);
+// });
 btn_login.addEventListener('click',login);
 
